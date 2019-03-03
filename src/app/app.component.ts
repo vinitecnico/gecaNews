@@ -1,4 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
+import * as _ from 'lodash';
 
 // services
 import { NewsService } from './services/news.service';
@@ -12,9 +15,11 @@ export class AppComponent {
   data: any;
   item: any;
   i: number = 0;
+  dateNow;
 
   constructor(private newsService: NewsService) {
-
+    moment.locale('pt-BR');
+    this.dateNow = moment().format('dddd - DD/MMMM/YYYY');
   }
 
   ngOnInit() {
@@ -61,7 +66,7 @@ export class AppComponent {
           } else {
             this.getItems();
           }
-        }, 12000);
+        }, 14000);
 
       }, (error) => {
         console.log(error);
