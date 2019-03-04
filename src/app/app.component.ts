@@ -5,6 +5,9 @@ import * as _ from 'lodash';
 
 // services
 import { NewsService } from './services/news.service';
+import { timeout } from 'q';
+import { async } from '@angular/core/testing';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +17,6 @@ import { NewsService } from './services/news.service';
 export class AppComponent {
   data: any;
   item: any;
-  i: number = 0;
   dateNow;
 
   constructor(private newsService: NewsService) {
@@ -33,11 +35,11 @@ export class AppComponent {
   }
 
   getItems() {
-    this.newsService.globo()
-      .subscribe((response: any) => {
+    return this.newsService.globo()
+      .subscribe(async (response: any) => {
         this.data = [];
         this.data = response ? response.articles : [];
-        const gecaItem = {
+        let gecaItem: any = {
           source: {
             id: 'globo',
             name: 'Globo'
@@ -53,16 +55,26 @@ export class AppComponent {
           url: 'https://g1.globo.com/politica/noticia/2019/03/01/desembargador-suspende-apuracoes-sobre-advogado-de-agressor-de-bolsonaro.ghtml',
           urlToImage: 'https://dyegoteless.files.wordpress.com/2015/02/mac-tvms.jpg',
           publishedAt: '2019-03-01T20:06:41.307Z',
-          content: 'O desembargador do Tribunal Regional Federal da 1ª Região (TRF-1) Néviton Guedes mandou suspender nesta quinta-feira (28) apurações sobre a suposta participação do advogado Zanone Manuel de Oliveira Júnior no atentado contra o presidente Jair Bolsonaro durant… [+3158 chars]'
+          content: ''
         };
         this.data.push(gecaItem);
-        this.i = 0;
-        this.item = this.data[this.i];
 
-        setInterval(() => {
-          this.i++;
-          if (this.i < this.data.length) {
-            this.item = this.data[this.i];
+        // gecaItem = {
+        //   isplayer: true,
+        //   urlYoutube: 'http://www.youtube.com/embed/8Mx1SM_WrLE?autoplay=1',
+        //   milliseconds: 124200,
+        //   title: 'Geca media digital ',
+        //   description: 'teste video',
+        //   publishedAt: '2019-03-01T20:06:41.307Z'
+        // };
+        // this.data.push(gecaItem);
+        this.item = this.data[0];
+        let index = 0;
+
+        let timer = setInterval(() => {
+          index++;
+          if (index < this.data.length) {
+            this.item = this.data[index];
           } else {
             this.getItems();
           }
@@ -72,5 +84,4 @@ export class AppComponent {
         console.log(error);
       });
   }
-
 }
