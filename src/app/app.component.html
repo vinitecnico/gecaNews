@@ -4,14 +4,15 @@
 <main>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12" *ngIf="!item" style="text-align: center;">
+      <div class="col-12" *ngIf="!item && !data" style="text-align: center;">
         <img src="assets/images/loading.gif" alt="loading" style="max-width: 20%;">
       </div>
     </div>
-    <div class="row" *ngIf="item && data.length > 0">
+    <div class="row" *ngIf="item && data.length > 0" [@animationOption]="item && data.length > 0 ? 'open': 'close'">
       <div class="col-5">
         <h1>{{item?.title}}</h1>
         <P style="text-align: justify;">{{item?.description}}</P>
+        <P style="text-align: justify;">Fonte: <b>{{item?.author}}.com</b></P>
       </div>
       <div class="col-7" style="text-align: right;">
         <img *ngIf="!item.isplayer" class="rounded float-right shadow p-3 mb-5 bg-white"
@@ -32,8 +33,7 @@
       <div class="col-6">
         <p class="text-right align-middle"
           style="padding-top: 7%; font-weight: 500; font-size: 20px; margin-bottom: 5px;">{{dateNow}}</p>
-        <div class="text-right align-middle" style="padding-right: 5%; font-weight: 500; font-size: 35px;"
-          id="real-clock"></div>
+        <div class="text-right align-middle clock" id="real-clock"></div>
       </div>
     </div>
   </div>

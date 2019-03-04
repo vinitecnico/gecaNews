@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
 import * as _ from 'lodash';
@@ -12,7 +13,19 @@ import { interval } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('animationOption', [
+      transition(':enter', [
+        style({ backgroundColor: '#FFFFFF' }),
+        animate(200)
+      ]),
+      transition(':leave', [
+        animate(200, style({ backgroundColor: '#FFFFFF' }))
+      ]),
+      state('*', style({ backgroundColor: '#FFFFFF' })),
+    ])
+  ]
 })
 export class AppComponent {
   data: any;
@@ -73,11 +86,14 @@ export class AppComponent {
 
         let timer = setInterval(() => {
           index++;
-          if (index < this.data.length) {
-            this.item = this.data[index];
-          } else {
-            this.getItems();
-          }
+          this.item = null;
+          setTimeout(() => {
+            if (index < this.data.length) {
+              this.item = this.data[index];
+            } else {
+              this.getItems();
+            }
+          }, 300);
         }, 14000);
 
       }, (error) => {
