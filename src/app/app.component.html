@@ -10,7 +10,7 @@
     </div>
     <div class="row" *ngIf="item && data.length > 0" [@animationOption]="item && data.length > 0 ? 'open': 'close'">
       <div class="col-5">
-        <h1>{{item?.title}}</h1>
+        <h1 style="text-align: justify;">{{item?.title}}</h1>
         <P style="text-align: justify;">{{item?.description}}</P>
         <P style="text-align: justify;">Fonte: <b>{{item?.author}}.com</b></P>
       </div>
