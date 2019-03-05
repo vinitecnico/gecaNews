@@ -8,7 +8,7 @@
         <img src="assets/images/loading.gif" alt="loading" style="max-width: 20%;">
       </div>
     </div>
-    <div class="row" *ngIf="item && data.length > 0" [@animationOption]="item && data.length > 0 ? 'open': 'close'">
+    <div class="row" *ngIf="item && data.length > 0 && item.description.length > 100" [@animationOption]="item && data.length > 0 ? 'open': 'close'">
       <div class="col-5">
         <h1 style="text-align: justify;">{{item?.title}}</h1>
         <P style="text-align: justify;">{{item?.description}}</P>
@@ -18,6 +18,17 @@
         <img *ngIf="!item.isplayer" class="rounded float-right shadow p-3 mb-5 bg-white"
           style="max-height: 420px;text-align: right;max-width: 90%;" src="{{item?.urlToImage}}">
         <iframe *ngIf="item?.isplayer" width="100%" height="420" src="{{item?.urlYoutube}}"></iframe>
+      </div>
+    </div>
+    <div class="row" *ngIf="item && data.length > 0 && item.description.length < 100" [@animationOption]="item && data.length > 0 ? 'open': 'close'">
+      <div class="col-12 text-center">
+        <img *ngIf="!item.isplayer" class="rounded text-right shadow p-3 mb-0 bg-white"
+          style="max-height: 450px; max-width: 100%;" src="{{item?.urlToImage}}">
+      </div>
+      <div class="col-12 caption center-block">
+        <h3>{{item?.title}}</h3>
+        <P>{{item?.description}}</P>
+        <P *ngIf="item.author">Fonte: <b>{{item?.author}}.com</b></P>
       </div>
     </div>
   </div>

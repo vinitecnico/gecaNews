@@ -52,12 +52,7 @@ export class AppComponent {
       .subscribe(async (response: any) => {
         this.data = [];
         this.data = response ? response.articles : [];
-        let gecaItem: any = {
-          source: {
-            id: 'globo',
-            name: 'Globo'
-          },
-          author: 'Globo',
+        let gecaItem = {
           title: 'Geca media digital ',
           description: `Assistida por mais de 6 milhões de passageiros diariamente, conta com mais de 6.000 monitores, sendo 48 telas em cada uma das 142 composição do metrô. Nela são transmitidas informações em tempo real, publicidade, prestações de serviços e agendas culturais, entre outros. O conteúdo produzido especificamento para DOOH utilizando de colaboração do Grupo Bandeirantes, onde suas operações foram adquiridas pelo mesmo em 2008.   
           A partir de janeiro de 2011 a mídia online está presente no Metrô de Brasília. Desde maio de 2014 atua no Trensurb, no Rio Grande do Sul, sob esta bandeira, em diversos trens e em todas estações, e desde 2012 atua nos ônibus da Carris, na Rodoviária de Porto Alegre e no Catamarã Porto Alegre-Guaíba, sob a bandeira Canal Você.
@@ -67,6 +62,16 @@ export class AppComponent {
           Em janeiro de 2017, o Conselho Administrativo de Defesa Econômica (CADE), em decisão publicada no Diário Oficial da União, aprovou a aquisição de 30% das operações da TV Minuto pela Eletromidia. No fim de julho de 2018, o CADE aprova a venda dos 70% restantes para a Eletromidia.`,
           url: 'https://g1.globo.com/politica/noticia/2019/03/01/desembargador-suspende-apuracoes-sobre-advogado-de-agressor-de-bolsonaro.ghtml',
           urlToImage: 'https://dyegoteless.files.wordpress.com/2015/02/mac-tvms.jpg',
+          publishedAt: '2019-03-01T20:06:41.307Z',
+          content: ''
+        };
+        this.data.push(gecaItem);
+
+        gecaItem = {
+          title: 'Extremo sul de São Paulo registra frio de 11°C e sensação térmica de 10°C',
+          description: `Os termômetros das estações meteorológicas do Centro de Gerenciamento de Emergências (CGE) marcaram média de 12°C na maioria dos bairros de São Paulo na madrugada desta sexta-feira (29). Entretanto, por conta dos ventos, a sensação térmica foi de 10°C, diz o CGE.`,
+          url: 'https://g1.globo.com/politica/noticia/2019/03/01/desembargador-suspende-apuracoes-sobre-advogado-de-agressor-de-bolsonaro.ghtml',
+          urlToImage: 'http://s2.glbimg.com/9e0-70XSh7VKSex3FYHD_-zlrK8=/620x465/s.glbimg.com/jo/g1/f/original/2016/04/29/tempo03.jpg',
           publishedAt: '2019-03-01T20:06:41.307Z',
           content: ''
         };
@@ -93,8 +98,8 @@ export class AppComponent {
             } else {
               this.getItems();
             }
-          }, 300);
-        }, 14000);
+          }, 600);
+        }, 15000);
 
       }, (error) => {
         console.log(error);

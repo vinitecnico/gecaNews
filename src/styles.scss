@@ -25,6 +25,7 @@
 $fa-font-path: "../node_modules/font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome.scss';
 
+
 main {
     position: relative;
     max-height: 78%;
@@ -49,4 +50,13 @@ footer {
     font-size: 35px;
     -webkit-transition: width 2s; /* Safari */
     transition: width 2s;
+}
+
+.caption {
+  font-size: 20px;
+  color: white; 
+  text-align: center;
+  /* HSL value with color and 100% transparency*/
+  background-color: rgba(10, 10, 10, 0.5);  /* 100% transparent */
+  width: 100%;  
 }
