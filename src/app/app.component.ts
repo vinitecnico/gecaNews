@@ -18,10 +18,10 @@ import { interval, Observable } from 'rxjs';
     trigger('animationOption', [
       transition(':enter', [
         style({ backgroundColor: '#FFFFFF' }),
-        animate(200)
+        animate(300)
       ]),
       transition(':leave', [
-        animate(200, style({ backgroundColor: '#FFFFFF' }))
+        animate(300, style({ backgroundColor: '#FFFFFF' }))
       ]),
       state('*', style({ backgroundColor: '#FFFFFF' })),
     ])
@@ -31,6 +31,7 @@ export class AppComponent {
   data: any;
   item: any;
   dateNow;
+  showAnimation: boolean;
 
   constructor(private newsService: NewsService) {
     moment.locale('pt-BR');
@@ -48,6 +49,7 @@ export class AppComponent {
   }
 
   getItems() {
+    this.showAnimation = false;
     return this.newsService.globo()
       .subscribe(async (response: any) => {
         this.data = [];
@@ -55,15 +57,18 @@ export class AppComponent {
 
         this.item = this.data[0];
         let index = 0;
+        this.showAnimation = true;
 
         //emit value in sequence every 1 second
         const source = interval(13000);
         const subscribe = source.subscribe(val => {
           index++;
           this.item = null;
+          this.showAnimation = false;
           if (index < this.data.length) {
             setTimeout(() => {
-            this.item = this.data[index];
+              this.showAnimation = true;
+              this.item = this.data[index];
             }, 300);
           } else {
             setTimeout(() => {
