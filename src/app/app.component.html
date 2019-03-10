@@ -8,10 +8,10 @@
         <img src="assets/images/loading.gif" alt="loading" style="max-width: 20%;">
       </div>
     </div>
-    <div class="row" *ngIf="item && data.length > 0 && item.description.length > 100" [@slideInOut]>
+    <div class="row" *ngIf="item && data.length > 0 && item.description.length > 100" [@myAnimation]="showAnimation">
       <div class="col-5">
-        <h1 style="text-align: justify;" [innerHTML]="item?.title | sanitizeHtml"></h1>
-        <P style="text-align: justify;" [innerHTML]="item?.description | sanitizeHtml"></P>
+        <h1 style="text-align: justify;" [@myAnimation]="item.title && item.title" [innerHTML]="item?.title | sanitizeHtml"></h1>
+        <P style="text-align: justify;" [@myAnimation]="item.title && item.description" [innerHTML]="item?.description | sanitizeHtml"></P>
         <P style="text-align: justify;" *ngIf="item.author">Fonte: <b>{{item?.author}}</b></P>
       </div>
       <div class="col-7" style="text-align: right;">
@@ -20,14 +20,14 @@
         <iframe *ngIf="item?.isplayer" width="100%" height="420" src="{{item?.urlYoutube}}"></iframe>
       </div>
     </div>
-    <div class="row" *ngIf="item && data.length > 0 && item.description.length < 100" [@slideInOut]>
+    <div class="row" *ngIf="item && data.length > 0 && item.description.length < 100" [@myAnimation]="showAnimation">
       <div class="col-12 text-center">
         <img *ngIf="!item.isplayer" class="rounded text-right shadow p-3 mb-0 bg-white"
           style="max-height: 450px; max-width: 100%;" src="{{item?.imageUrl}}">
       </div>
       <div class="col-12 caption center-block">
-        <h3 class="text-center"  [innerHTML]="item?.title | sanitizeHtml"></h3>
-        <P class="text-center" [innerHTML]="item?.description | sanitizeHtml"></P>
+        <h3 class="text-center" [@myAnimation]="item.title && item.title"  [innerHTML]="item?.title | sanitizeHtml"></h3>
+        <P class="text-center" [@myAnimation]="item.title && item.description" [innerHTML]="item?.description | sanitizeHtml"></P>
         <P *ngIf="item.author">Fonte: <b>{{item?.author}}</b></P>
       </div>
     </div>

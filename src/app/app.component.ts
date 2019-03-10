@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, state, style, animate, transition, query } from '@angular/animations';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
 import * as _ from 'lodash';
@@ -15,14 +15,11 @@ import { interval, Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    trigger('slideInOut', [
-      transition(':enter', [
-        style({transform: 'translateX(-80%)'}),
-        animate('300ms ease-in', style({transform: 'translateX(20%)'}))
-      ]),
-      transition(':leave', [
-        animate('300ms ease-in', style({transform: 'translateY(0)'}))
-      ])
+    trigger('myAnimation', [
+      state('true', style({ opacity: 1, left: -100, zIndex: 2 })),
+      state('void', style({ opacity: 0, left: 0, zIndex: 2 })),
+      transition(':enter', animate('350ms ease-in-out')),
+      transition(':leave', animate('350ms ease-in-out'))
     ])
   ]
 })
@@ -59,7 +56,7 @@ export class AppComponent {
         this.showAnimation = true;
 
         //emit value in sequence every 1 second
-        const source = interval(13000);
+        const source = interval(12000);
         const subscribe = source.subscribe(val => {
           index++;
           this.item = null;
