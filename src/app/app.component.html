@@ -8,11 +8,11 @@
         <img src="assets/images/loading.gif" alt="loading" style="max-width: 20%;">
       </div>
     </div>
-    <div class="row" *ngIf="item && data.length > 0 && item.description.length > 100" [@animationOption]="showAnimation ? 'open': 'close'">
+    <div class="row" *ngIf="item && data.length > 0 && item.description.length > 100" [@slideInOut]>
       <div class="col-5">
-        <h1 style="text-align: justify;" [@animationOption]="showAnimation ? 'open': 'close'" [innerHTML]="item?.title | sanitizeHtml"></h1>
-        <P style="text-align: justify;" [@animationOption]="showAnimation ? 'open': 'close'" [innerHTML]="item?.description | sanitizeHtml"></P>
-        <P style="text-align: justify;" [@animationOption]="showAnimation ? 'open': 'close'" *ngIf="item.author">Fonte: <b>{{item?.author}}</b></P>
+        <h1 style="text-align: justify;" [innerHTML]="item?.title | sanitizeHtml"></h1>
+        <P style="text-align: justify;" [innerHTML]="item?.description | sanitizeHtml"></P>
+        <P style="text-align: justify;" *ngIf="item.author">Fonte: <b>{{item?.author}}</b></P>
       </div>
       <div class="col-7" style="text-align: right;">
         <img *ngIf="!item.isplayer" class="rounded float-right shadow p-3 mb-5 bg-white"
@@ -20,8 +20,8 @@
         <iframe *ngIf="item?.isplayer" width="100%" height="420" src="{{item?.urlYoutube}}"></iframe>
       </div>
     </div>
-    <div class="row" *ngIf="item && data.length > 0 && item.description.length < 100" [@animationOption]="showAnimation > 0 ? 'open': 'close'">
-      <div class="col-12 text-center" [@animationOption]="showAnimation ? 'open': 'close'">
+    <div class="row" *ngIf="item && data.length > 0 && item.description.length < 100" [@slideInOut]>
+      <div class="col-12 text-center">
         <img *ngIf="!item.isplayer" class="rounded text-right shadow p-3 mb-0 bg-white"
           style="max-height: 450px; max-width: 100%;" src="{{item?.imageUrl}}">
       </div>

@@ -15,15 +15,14 @@ import { interval, Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    trigger('animationOption', [
+    trigger('slideInOut', [
       transition(':enter', [
-        style({ backgroundColor: '#FFFFFF' }),
-        animate(300)
+        style({transform: 'translateX(-80%)'}),
+        animate('300ms ease-in', style({transform: 'translateX(20%)'}))
       ]),
       transition(':leave', [
-        animate(300, style({ backgroundColor: '#FFFFFF' }))
-      ]),
-      state('*', style({ backgroundColor: '#FFFFFF' })),
+        animate('300ms ease-in', style({transform: 'translateY(0)'}))
+      ])
     ])
   ]
 })
