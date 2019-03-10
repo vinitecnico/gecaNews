@@ -59,4 +59,12 @@ footer {
   /* HSL value with color and 100% transparency*/
   background-color: rgba(10, 10, 10, 0.5);  /* 100% transparent */
   width: 100%;  
+  transition: bottom 500ms ease-in;
+}
+
+img {
+  transition: left 400ms linear;
+  transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
