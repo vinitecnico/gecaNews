@@ -10,9 +10,13 @@ import { AppComponent } from './app.component';
 import { NewsService } from './services/news.service';
 import { StartupConfigService } from './services/startup.config.service';
 
+// pipes
+import { SanitizeHtmlPipe } from './safe.pipe';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SanitizeHtmlPipe
   ],
   imports: [
     BrowserModule,
