@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 // services
 import { NewsService } from './services/news.service';
+import { StartupConfigService } from './services/startup.config.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { NewsService } from './services/news.service';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [NewsService],
+  providers: [NewsService, StartupConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
