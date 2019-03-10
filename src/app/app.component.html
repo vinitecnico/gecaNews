@@ -12,7 +12,7 @@
       <div class="col-5">
         <h1 style="text-align: justify;" [innerHTML]="item?.title | sanitizeHtml"></h1>
         <P style="text-align: justify;" [innerHTML]="item?.description | sanitizeHtml"></P>
-        <P style="text-align: justify;">Fonte: <b>{{item?.author}}.com</b></P>
+        <!-- <P style="text-align: justify;">Fonte: <b>{{item?.author}}.com</b></P> -->
       </div>
       <div class="col-7" style="text-align: right;">
         <img *ngIf="!item.isplayer" class="rounded float-right shadow p-3 mb-5 bg-white"
@@ -28,7 +28,7 @@
       <div class="col-12 caption center-block">
         <h3 class="text-center" [innerHTML]="item?.title | sanitizeHtml"></h3>
         <P class="text-center" [innerHTML]="item?.description | sanitizeHtml"></P>
-        <P *ngIf="item.author">Fonte: <b>{{item?.author}}.com</b></P>
+        <!-- <P *ngIf="item.author">Fonte: <b>{{item?.author}}.com</b></P> -->
       </div>
     </div>
   </div>

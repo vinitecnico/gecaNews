@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 import { NewsService } from './services/news.service';
 import { timeout } from 'q';
 import { async } from '@angular/core/testing';
-import { interval } from 'rxjs';
+import { interval, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -52,22 +52,26 @@ export class AppComponent {
       .subscribe(async (response: any) => {
         this.data = [];
         this.data = response;
-        
+
         this.item = this.data[0];
         let index = 0;
 
-        let timer = setInterval(() => {
+        //emit value in sequence every 1 second
+        const source = interval(13000);
+        const subscribe = source.subscribe(val => {
           index++;
           this.item = null;
-          setTimeout(() => {
-            if (index < this.data.length) {
-              this.item = this.data[index];
-            } else {
+          if (index < this.data.length) {
+            setTimeout(() => {
+            this.item = this.data[index];
+            }, 300);
+          } else {
+            setTimeout(() => {
+              subscribe.unsubscribe();
               this.getItems();
-            }
-          }, 600);
-        }, 15000);
-
+            });
+          }
+        });
       }, (error) => {
         console.log(error);
       });
