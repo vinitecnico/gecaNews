@@ -4,19 +4,32 @@
 <main>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12" *ngIf="!item && !data" style="text-align: center;">
-        <img src="assets/images/loading.gif" alt="loading" style="max-width: 20%;">
+      <div class="col-12" *ngIf="!item && !data" style="text-align: center;margin-top: 7%;">
+        <h1 class="ml8">
+          <span class="letters-container">
+            <span class="letters letters-left"><i class="fa fa-tv"></i></span>
+          </span>
+          <span class="circle circle-white"></span>
+          <span class="circle circle-dark"></span>
+          <span class="circle circle-container"><span class="circle circle-dark-dashed"></span></span>
+        </h1>
       </div>
     </div>
     <div class="row" *ngIf="item && data.length > 0 && item.description.length > 100" [@myAnimation]="showAnimation">
       <div class="col-5">
-        <h1 style="text-align: justify;" [@myAnimation]="item.title && item.title" [innerHTML]="item?.title | sanitizeHtml"></h1>
+        <!-- <h1 style="text-align: justify;" [@myAnimation]="item.title && item.title" [innerHTML]="item?.title | sanitizeHtml"></h1> -->
+        <h1 class="ml1">
+          <span class="text-wrapper">
+            <span class="letters" [innerHTML]="item?.title | sanitizeHtml"></span>
+            <span class="line line2"></span>
+          </span>
+        </h1>
         <P style="text-align: justify;" [@myAnimation]="item.title && item.description" [innerHTML]="item?.description | sanitizeHtml"></P>
         <P style="text-align: justify;" *ngIf="item.author">Fonte: <b>{{item?.author}}</b></P>
       </div>
       <div class="col-7" style="text-align: right;">
         <img *ngIf="!item.isplayer" class="rounded float-right shadow p-3 mb-5 bg-white"
-          style="max-height: 420px;text-align: right;max-width: 90%;" src="{{item?.imageUrl}}">
+          style="max-height: 420px;min-height: 418px;text-align: right;max-width: 90%;" src="{{item?.imageUrl}}">
         <iframe *ngIf="item?.isplayer" width="100%" height="420" src="{{item?.urlYoutube}}"></iframe>
       </div>
     </div>
@@ -42,7 +55,7 @@
         <p style="padding-left: 42px; font-weight: 500;">Geca - 2018</p>
       </div>
       <div class="col-12 col-sm-3">
-        <iframe 
+        <!-- <iframe 
           scrolling="no" 
           frameborder="0" 
           marginwidth="0" 
@@ -50,7 +63,7 @@
           width="120" 
           height="150" 
           src="https://selos.climatempo.com.br/selos/MostraSelo120.php?CODCIDADE=558&SKIN=padrao">
-        </iframe>
+        </iframe> -->
       </div>
       <div class="col-12 col-sm-6">
         <p class="text-right align-middle"
