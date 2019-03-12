@@ -36,7 +36,7 @@
     <div class="row" *ngIf="item && data.length > 0 && item.description.length < 100" [@myAnimation]="showAnimation">
       <div class="col-12 text-center">
         <img *ngIf="!item.isplayer" class="rounded text-right shadow p-3 mb-0 bg-white"
-          style="max-height: 450px; max-width: 100%;" src="{{item?.imageUrl}}">
+          style="max-height: 450px;min-height: 418px; max-width: 100%;" src="{{item?.imageUrl}}">
       </div>
       <div class="col-12 caption center-block">
         <h3 class="text-center" [@myAnimation]="item.title && item.title"  [innerHTML]="item?.title | sanitizeHtml"></h3>
