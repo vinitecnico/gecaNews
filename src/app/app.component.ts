@@ -153,7 +153,7 @@ export class AppComponent {
             setTimeout(() => {
               this.showAnimation = true;
               this.item = this.data[index];
-              this.animationTitle();
+              // this.animationTitle();
             }, 300);
           } else {
             setTimeout(() => {
